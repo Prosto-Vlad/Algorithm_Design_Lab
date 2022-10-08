@@ -1,0 +1,15 @@
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\bin\Debug\net6.0\Lab1_algoritm.exe
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\bin\Debug\net6.0\Lab1_algoritm.deps.json
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\bin\Debug\net6.0\Lab1_algoritm.runtimeconfig.json
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\bin\Debug\net6.0\Lab1_algoritm.dll
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\bin\Debug\net6.0\Lab1_algoritm.pdb
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\obj\Debug\net6.0\Lab1_algoritm.csproj.AssemblyReference.cache
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\obj\Debug\net6.0\Lab1_algoritm.GeneratedMSBuildEditorConfig.editorconfig
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\obj\Debug\net6.0\Lab1_algoritm.AssemblyInfoInputs.cache
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\obj\Debug\net6.0\Lab1_algoritm.AssemblyInfo.cs
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\obj\Debug\net6.0\Lab1_algoritm.csproj.CoreCompileInputs.cache
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\obj\Debug\net6.0\Lab1_algoritm.dll
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\obj\Debug\net6.0\refint\Lab1_algoritm.dll
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\obj\Debug\net6.0\Lab1_algoritm.pdb
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\obj\Debug\net6.0\Lab1_algoritm.genruntimeconfig.cache
+D:\Visual Projects\Laboratori_Algoritms\Lab1_algoritm\Lab1_algoritm\obj\Debug\net6.0\ref\Lab1_algoritm.dll
