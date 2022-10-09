@@ -21,6 +21,8 @@ namespace Lab1_algoritm
                     writer.Write(b);
                 }
                 Console.WriteLine("Numbers genered!");
+
+                
             }
         }
     }
