@@ -1,0 +1,15 @@
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\bin\Debug\Lab4.exe.config
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\bin\Debug\Lab4.exe
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\bin\Debug\Lab4.pdb
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\bin\Debug\AutomaticGraphLayout.dll
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\bin\Debug\AutomaticGraphLayout.Drawing.dll
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\bin\Debug\Microsoft.Msagl.GraphViewerGdi.dll
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\obj\Debug\Lab4.csproj.AssemblyReference.cache
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\obj\Debug\Lab4.csproj.SuggestedBindingRedirects.cache
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\obj\Debug\Lab4.Form1.resources
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\obj\Debug\Lab4.Properties.Resources.resources
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\obj\Debug\Lab4.csproj.GenerateResource.cache
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\obj\Debug\Lab4.csproj.CoreCompileInputs.cache
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\obj\Debug\Lab4.csproj.CopyComplete
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\obj\Debug\Lab4.exe
+D:\Visual Projects\Algorithm_Design_Lab\Lab4\Lab4\obj\Debug\Lab4.pdb
