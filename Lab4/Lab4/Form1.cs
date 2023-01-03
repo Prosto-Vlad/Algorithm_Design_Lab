@@ -22,7 +22,7 @@ namespace Lab4
 
             Random rand = new Random();
             System.Drawing.Color col;
-            for (int i = 0; i < 60; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 col = System.Drawing.Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255));
                 if (AllColor.IndexOf(col) == -1 && col != System.Drawing.Color.Black)
@@ -73,10 +73,8 @@ namespace Lab4
                 int iter = Convert.ToInt32(iteration_box.Text);
                 int bees = Convert.ToInt32(bee_box.Text);
                 int ranger = Convert.ToInt32(ranger_box.Text);
-                hive = new Hive(iter, bees, ranger, ref graph, AllColor);
-                if(graph.Crhome_num == 0)
-                    hive.greedy_color();
-                //hrom_histori.Text = hive.ABC();
+                hive = new Hive(iter, bees, ranger, ref graph, graph, AllColor);
+                hrom_histori.Text = hive.ABC();
 
                 int i = 0;
                 foreach (var node in gViewer1.Graph.Nodes)

@@ -53,19 +53,19 @@ namespace Lab1_algoritm
             }
 
             Console.WriteLine("File sorted!");
-            Console.WriteLine("Show first 100 numbers?");
+            Console.WriteLine("Show first 1000 numbers?\n1 - yes\n2 - no");
             switcher=Convert.ToInt32(Console.ReadLine());
             if (switcher == 1)
             {
                 BinaryReader readA = new BinaryReader(new FileStream(path, FileMode.Open));
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < 1000; i++)
                 {
                     Console.Write(readA.ReadInt32());
                     Console.Write(", ");
                 }
             }
             sw.Stop();
-            Console.WriteLine(sw.ToString());
+            Console.WriteLine(sw.ElapsedMilliseconds);
         }
     }
 }

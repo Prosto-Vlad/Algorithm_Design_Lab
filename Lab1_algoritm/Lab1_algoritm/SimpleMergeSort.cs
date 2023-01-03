@@ -18,28 +18,6 @@ namespace Lab1_algoritm
             while (readA.BaseStream.Position != readA.BaseStream.Length)
             {
                 curr = readA.ReadInt32();
-                //if (count % 2 == 0)
-                //{
-                //    while (prev <= curr)
-                //    {
-                //        TempB.Write(prev);
-                //        prev = curr;
-                //    }
-                //    TempB.Write(prev);
-                //    prev = curr;
-                //    count++;
-                //}
-                //else
-                //{
-                //    while (prev <= curr)
-                //    {
-                //        TempC.Write(prev);
-                //        prev = curr;
-                //    }
-                //    TempC.Write(prev);
-                //    prev = curr;
-                //    count++;
-                //}
                 if (count % 2 == 0)
                 {
                     if (prev <= curr)

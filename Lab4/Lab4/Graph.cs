@@ -17,7 +17,14 @@ namespace Lab4
 
         public List<Node> Nodes
         {
-            get { return nodes; }
+            get {
+                List<Node> list = new List<Node>();
+                for (int i = 0; i < nodes.Count; i++)
+                {
+                    list.Add(nodes[i]);
+                }
+                return list;
+            }
             set { nodes = value; }
         }
         public int[,] Matrix
@@ -74,6 +81,18 @@ namespace Lab4
         public Graph()
         {
 
+        }
+
+        public Graph(Graph cop)
+        {
+            this.size = cop.Size;
+            this.matrix = cop.Matrix;
+            this.crhome_num = cop.Crhome_num;
+            for (int i = 0; i < cop.Nodes.Count; i++)
+            {
+                Node node = new Node(cop.nodes[i]);
+                this.nodes.Add(node);
+            }
         }
         public Graph(int size)
         {
@@ -179,6 +198,20 @@ namespace Lab4
             }
 
 
+        }
+
+        public List<Node> FindRelate(Node node)
+        {
+            List<Node> nodes = new List<Node>();
+            int num = Nodes.IndexOf(node);
+            for (int i = 0; i < Size; i++)
+            {
+                if (Matrix[num, i] == 1)
+                {
+                    nodes.Add(Nodes[i]);
+                }
+            }
+            return nodes;
         }
     }
 }

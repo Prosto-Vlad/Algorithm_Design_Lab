@@ -30,6 +30,12 @@ namespace Lab4
             set { p = value; }
         }
 
+        public Node(Node node)
+        {
+            this.weight = node.weight;
+            this.color = node.color;
+        }
+
         public Node(int weight)
         {
             this.weight = weight;
