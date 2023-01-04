@@ -19,7 +19,7 @@ namespace Lab4
         {
             get {
                 List<Node> list = new List<Node>();
-                for (int i = 0; i < nodes.Count; i++)
+                for (int i = 0; i < nodes.Count; ++i)
                 {
                     list.Add(nodes[i]);
                 }
@@ -59,10 +59,10 @@ namespace Lab4
         {
             int count = 0;
 
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < size; ++i)
             {
                 count = 0;
-                for (int j = 0; j < size; j++)
+                for (int j = 0; j < size; ++j)
                 {
                     if (matrix[i,j] == 0)
                     {
@@ -88,7 +88,7 @@ namespace Lab4
             this.size = cop.Size;
             this.matrix = cop.Matrix;
             this.crhome_num = cop.Crhome_num;
-            for (int i = 0; i < cop.Nodes.Count; i++)
+            for (int i = 0; i < cop.Nodes.Count; ++i)
             {
                 Node node = new Node(cop.nodes[i]);
                 this.nodes.Add(node);
@@ -99,15 +99,15 @@ namespace Lab4
             matrix = new int[size, size];
             this.size = size;
             crhome_num = 0;
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < size; ++i)
             {
-                for (int j = 0; j < size; j++)
+                for (int j = 0; j < size; ++j)
                 {
                     matrix[i, j] = 0;
                 }
             }
 
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < size; ++i)
             {
                 Node temp = new Node(0);
                 nodes.Add(temp);
@@ -204,7 +204,7 @@ namespace Lab4
         {
             List<Node> nodes = new List<Node>();
             int num = Nodes.IndexOf(node);
-            for (int i = 0; i < Size; i++)
+            for (int i = 0; i < Size; ++i)
             {
                 if (Matrix[num, i] == 1)
                 {

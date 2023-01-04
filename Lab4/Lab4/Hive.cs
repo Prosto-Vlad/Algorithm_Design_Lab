@@ -13,6 +13,7 @@ namespace Lab4
     {
         private Graph initialGraph;
         private Graph graph;
+        private Graph best_graph;
 
         private int free_bees;
         private int ranger_bees;
@@ -43,16 +44,17 @@ namespace Lab4
         {
             string chorm_history = "";
             int best_chrom_num = FindChromNum();
+            best_graph = new Graph(graph);
             chorm_history += best_chrom_num;
             ResetAlg();
 
-            for (int i = 0; i < max_iter; i++)
+            for (int i = 0; i < max_iter; ++i)
             {
                 int new_chrom = FindChromNum();
                 if (new_chrom < best_chrom_num)
                 {
                     best_chrom_num = new_chrom;
-                    graph.Crhome_num = best_chrom_num;
+                    best_graph = new Graph(graph);
                 }
                 if (i%20 == 0)
                 {
@@ -61,6 +63,8 @@ namespace Lab4
 
                 ResetAlg();
             }
+
+            graph = best_graph;
             return chorm_history;
         }
 
@@ -71,21 +75,21 @@ namespace Lab4
                 List<Node> RangerNodes = SendRangerBees();
                 SendFreeBees(RangerNodes);
             }
-
+            graph.Crhome_num = UsedColor.Count;
             return UsedColor.Count;
         }
 
         private void SendFreeBees(List<Node> RangerNodes)
         {
             int[] WageRangerNodes = new int[RangerNodes.Count];
-            for (int i = 0; i < WageRangerNodes.Length; i++)
+            for (int i = 0; i < WageRangerNodes.Length; ++i)
             {
                 WageRangerNodes[i] = graph.Nodes[graph.Nodes.IndexOf(RangerNodes[i])].Weight;
             }
             int[] FreeBeesSplit = SplitFreeBees(WageRangerNodes);
 
 
-            for (int i = 0; i < RangerNodes.Count; i++)
+            for (int i = 0; i < RangerNodes.Count; ++i)
             {
                 int free_bees_for_node = FreeBeesSplit[i];
                 List<Node> relates = graph.FindRelate(RangerNodes[i]);
@@ -103,7 +107,7 @@ namespace Lab4
         private void ColorNode(Node coloring)
         {
             List<Color> colors = new List<Color>();
-            for (int i = 0; i < UsedColor.Count; i++)
+            for (int i = 0; i < UsedColor.Count; ++i)
             {
                 colors.Add(UsedColor[i]);
             }
@@ -114,27 +118,34 @@ namespace Lab4
             {
                 if (colors.Count == 0)
                 {
-                    UsedColor.Add(AllColor[UsedColor.Count]);
-
-                    coloring.Color = AllColor[UsedColor.Count];
-                    isEnd = true;
+                    Color new_col = AllColor[UsedColor.Count];
+                    UsedColor.Add(new_col);
+                    coloring.Color = new_col;
+                    break;
                 }
-                else
+                Color NewColor = colors[0];
+                Color OldColor = coloring.Color;
+                coloring.Color = NewColor;
+                colors.Remove(NewColor);
+                isEnd = true;
+
+                bool isValid = true;
+
+                for (int i = 0; i < graph.Size; ++i)
                 {
-                    Color NewColor = colors[0];
-                    Color OldColor = coloring.Color;
-                    coloring.Color = NewColor;
-                    isEnd = true;
-
-                    bool isValid = IsGraphRightColored();
-
-                    if (!isValid)
+                    for (int j = 0; j < graph.Size; ++j)
                     {
-                        coloring.Color = OldColor;
-                        isEnd = false;
+                        if (graph.Matrix[i, j] == 1 && graph.Nodes[i].Color != Color.Black && graph.Nodes[i].Color == graph.Nodes[j].Color)
+                        {
+                            isValid = false;
+                        }
                     }
+                }
 
-                    colors.Remove(NewColor);
+                if (!isValid)
+                {
+                    coloring.Color = OldColor;
+                    isEnd = false;
                 }
             }
         }
@@ -144,7 +155,7 @@ namespace Lab4
             double[] Nectar = GetNectar(wages);
             int[]   res = new int[Nectar.Length];
             int freeB = free_bees;
-            for (int i = 0; i < Nectar.Length; i++)
+            for (int i = 0; i < Nectar.Length; ++i)
             {
                 res[i] = (int)(Nectar[i] * freeB);
                 freeB -= res[i];
@@ -156,7 +167,7 @@ namespace Lab4
         {
             double[] Nectar = new double[wages.Length];
             int total_wage = wages.Sum();
-            for (int i = 0; i < wages.Length; i++)
+            for (int i = 0; i < wages.Length; ++i)
             {
                 Nectar[i] = (double)wages[i] / total_wage;
             }
@@ -167,7 +178,7 @@ namespace Lab4
         {
             List<Node> res = new List<Node>();
 
-            for (int i = 0; i < ranger_bees; i++)
+            for (int i = 0; i < ranger_bees; ++i)
             {
                 if (UnUsedNodes.Count == 0)
                 {
@@ -183,9 +194,9 @@ namespace Lab4
 
         private bool IsGraphRightColored()
         {
-            for (int i = 0; i < graph.Size; i++)
+            for (int i = 0; i < graph.Size; ++i)
             {
-                for (int j = 0; j < graph.Size; j++)
+                for (int j = 0; j < graph.Size; ++j)
                 {
                     if (graph.Matrix[i,j] == 1 && graph.Nodes[i].Color != Color.Black && graph.Nodes[i].Color == graph.Nodes[j].Color)
                     {
@@ -194,7 +205,7 @@ namespace Lab4
                 }
             }
 
-            for (int i = 0; i < graph.Size; i++)
+            for (int i = 0; i < graph.Size; ++i)
             {
                 if (graph.Nodes[i].Color == Color.Black)
                 {
