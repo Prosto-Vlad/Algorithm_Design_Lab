@@ -93,6 +93,22 @@ namespace Lab4
 
                 gViewer1.Refresh();
 
+                string matr = "   ";
+                for (int j = 0; j < graph.Size; j++)
+                {
+                    matr += AllColor.IndexOf(graph.Nodes[j].Color) + " ";
+                }
+                matr += Environment.NewLine;
+                for (int j = 0; j < graph.Size; j++)
+                {
+                    matr += AllColor.IndexOf(graph.Nodes[j].Color) + ": ";
+                    for (int k = 0; k < graph.Size; k++)
+                    {
+                        matr += graph.Matrix[j, k] + " ";
+                    }
+                    matr += Environment.NewLine; 
+                }
+                textBox1.Text = matr;
             }
         }
     }

@@ -1,13 +1,11 @@
-﻿using Microsoft.Msagl.Core.Layout;
-//using Microsoft.Msagl.Drawing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab4
+namespace Lab4_console
 {
     class Hive
     {
@@ -17,8 +15,8 @@ namespace Lab4
 
         private int free_bees;
         private int ranger_bees;
-        private List<Color> AllColor = new List<Color>();
-        private List<Color> UsedColor = new List<Color>();
+        private List<int> AllColor = new List<int>();
+        private List<int> UsedColor = new List<int>();
         private List<Node> UnUsedNodes = new List<Node>();
         //private Color[] BestColor;
 
@@ -26,7 +24,7 @@ namespace Lab4
         private int max_iter;
         //private int best_chrom;
 
-        public Hive(int max_iter, int all_bees, int ranger_bees, ref Graph graph, Graph inGraph, List<Color> col, int max_crhome_num = int.MaxValue)
+        public Hive(int max_iter, int all_bees, int ranger_bees, ref Graph graph, Graph inGraph, List<int> col, int max_crhome_num = int.MaxValue)
         {
             this.max_crhome_num = max_crhome_num;
             this.max_iter = max_iter;
@@ -40,12 +38,12 @@ namespace Lab4
             AllColor = col;
         }
 
-        public string ABC()
+        public List<int> ABC()
         {
-            string chorm_history = "";
+            List<int> chorm_history = new List<int>();
             int best_chrom_num = FindChromNum();
             best_graph = new Graph(graph);
-            chorm_history += best_chrom_num;
+            chorm_history.Add(best_chrom_num);
             ResetAlg();
 
             for (int i = 0; i < max_iter; ++i)
@@ -58,7 +56,7 @@ namespace Lab4
                 }
                 if (i%20 == 0)
                 {
-                    chorm_history += ", " + best_chrom_num.ToString();
+                    chorm_history.Add(best_chrom_num);
                 }
 
                 ResetAlg();
@@ -106,7 +104,7 @@ namespace Lab4
 
         private void ColorNode(Node coloring)
         {
-            List<Color> colors = new List<Color>();
+            List<int> colors = new List<int>();
             for (int i = 0; i < UsedColor.Count; ++i)
             {
                 colors.Add(UsedColor[i]);
@@ -118,13 +116,13 @@ namespace Lab4
             {
                 if (colors.Count == 0)
                 {
-                    Color new_col = AllColor[UsedColor.Count];
+                    int new_col = AllColor[UsedColor.Count];
                     UsedColor.Add(new_col);
                     coloring.Color = new_col;
                     break;
                 }
-                Color NewColor = colors[0];
-                Color OldColor = coloring.Color;
+                int NewColor = colors[0];
+                int OldColor = coloring.Color;
                 coloring.Color = NewColor;
                 colors.Remove(NewColor);
                 isEnd = true;
@@ -133,7 +131,7 @@ namespace Lab4
                 List<Node> relates = graph.FindRelate(coloring);
                 for (int i = 0; i < relates.Count; i++)
                 {
-                    if (coloring.Color == relates[i].Color && coloring.Color != Color.Black && relates[i].Color != Color.Black)
+                    if (coloring.Color == relates[i].Color && coloring.Color != -1 && relates[i].Color != -1)
                         isValid = false;
                 }
          
@@ -204,7 +202,7 @@ namespace Lab4
             {
                 for (int j = 0; j < graph.Size; ++j)
                 {
-                    if (graph.Matrix[i,j] == 1 && graph.Nodes[i].Color != Color.Black && graph.Nodes[i].Color == graph.Nodes[j].Color)
+                    if (graph.Matrix[i,j] == 1 && graph.Nodes[i].Color != -1 && graph.Nodes[i].Color == graph.Nodes[j].Color)
                     {
                         return false;
                     }
@@ -213,7 +211,7 @@ namespace Lab4
 
             for (int i = 0; i < graph.Size; ++i)
             {
-                if (graph.Nodes[i].Color == Color.Black)
+                if (graph.Nodes[i].Color == -1)
                 {
                     return false;
                 }

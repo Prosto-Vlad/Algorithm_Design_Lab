@@ -1,0 +1,15 @@
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\obj\Debug\net6.0\Lab4_console.csproj.AssemblyReference.cache
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\obj\Debug\net6.0\Lab4_console.GeneratedMSBuildEditorConfig.editorconfig
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\obj\Debug\net6.0\Lab4_console.AssemblyInfoInputs.cache
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\obj\Debug\net6.0\Lab4_console.AssemblyInfo.cs
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\obj\Debug\net6.0\Lab4_console.csproj.CoreCompileInputs.cache
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\bin\Debug\net6.0\Lab4_console.exe
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\bin\Debug\net6.0\Lab4_console.deps.json
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\bin\Debug\net6.0\Lab4_console.runtimeconfig.json
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\bin\Debug\net6.0\Lab4_console.dll
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\bin\Debug\net6.0\Lab4_console.pdb
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\obj\Debug\net6.0\Lab4_console.dll
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\obj\Debug\net6.0\refint\Lab4_console.dll
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\obj\Debug\net6.0\Lab4_console.pdb
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\obj\Debug\net6.0\Lab4_console.genruntimeconfig.cache
+D:\Visual Projects\Algorithm_Design_Lab\Lab4_console\Lab4_console\obj\Debug\net6.0\ref\Lab4_console.dll

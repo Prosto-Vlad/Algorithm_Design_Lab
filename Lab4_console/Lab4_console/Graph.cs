@@ -1,12 +1,10 @@
-﻿using Microsoft.Msagl.Drawing;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace Lab4
+namespace Lab4_console
 {
     class Graph
     { 
@@ -115,41 +113,36 @@ namespace Lab4
             }
         }
 
-        /*
+
         public void print_matrix()
         {
             Console.Write("   ");
             for (int i = 0; i < size; i++)
             {
-                if (nodes[i].Color != null)
+                if (nodes[i].Color >= 10)
                 {
-                    Console.ForegroundColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), nodes[i].Color, true);
-                }
-                if (i >= 10)
-                {
-                    Console.Write(i + " ");
+                    Console.Write(nodes[i].Color + " ");
                 }
                 else
                 {
-                    Console.Write("0" + i + " ");
+                    Console.Write("0" + nodes[i].Color + " ");
                 }
-                Console.ForegroundColor = ConsoleColor.White;
             }
             Console.WriteLine();
 
             for (int i = 0; i < size; i++)
             {
-                if (i >= 10)
+                if (nodes[i].Color >= 10)
                 {
-                    Console.Write(i + " ");
+                    Console.Write(nodes[i].Color + " ");
                 }
                 else
                 {
-                    Console.Write(i + "  ");
+                    Console.Write(nodes[i].Color + "  ");
                 }
                 for (int j = 0; j < size; j++)
                 {
-                    if (matrix[i,j] == 0)
+                    if (matrix[i, j] == 0)
                     {
                         Console.Write(" 0 ");
                     }
@@ -162,7 +155,7 @@ namespace Lab4
             }
             Console.WriteLine();
         }
-        */
+
         public int getSize()
         {
             return size;
