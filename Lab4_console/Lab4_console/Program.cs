@@ -39,12 +39,12 @@ class Program
 
         for (int i = 0; i < history.Count; i++)
         {
-            Console.Write("Iteration " + (i*20).ToString() + ": ");
+            Console.Write("Iteration " + (i * 20).ToString() + ": ");
             Console.WriteLine(history[i].ToString());
         }
         Console.WriteLine();
 
-        //graph.print_matrix();
+        graph.print_matrix();
 
         Console.ReadLine();
     }

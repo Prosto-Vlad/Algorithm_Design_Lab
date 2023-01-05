@@ -171,27 +171,43 @@ namespace Lab4_console
 
         public void generate_relations()
         {
-            bool end = false;
+            //bool end = false;
             Random rand = new Random();
-            int first, second;
+            int rel;
+            //int first, second;
 
-            while(!end)
+            //while(!end)
+            //{
+            //    first = rand.Next(0, size);
+            //    second = rand.Next(0, size);
+
+            //    if (first != second && !IsRelated(first, second))
+            //    {
+            //        add_relation(first, second);
+            //    }
+
+            //    if (IsEnd())
+            //    {
+            //        end = true;
+            //    }
+            //}
+
+            for (int i = 0; i < size; i++)
             {
-                first = rand.Next(0, size);
-                second = rand.Next(0, size);
-
-                if (first != second && !IsRelated(first, second))
+                rel = rand.Next(2, 4) - nodes[i].Weight;
+                if (rel == 1)
+                    rel = 2;
+                int iter = 0;
+                while (iter <= rel && rel >= 2)
                 {
-                    add_relation(first, second);
-                }
-
-                if (IsEnd())
-                {
-                    end = true;
+                    int node_num = rand.Next(size);
+                    if (i != node_num && !IsRelated(i, node_num))
+                    {
+                        add_relation(i, node_num);
+                        iter++;
+                    }
                 }
             }
-
-
         }
 
         public List<Node> FindRelate(Node node)
