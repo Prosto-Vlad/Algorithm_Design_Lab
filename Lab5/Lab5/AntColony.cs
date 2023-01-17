@@ -19,7 +19,8 @@ namespace Lab5
         private int A;
         private int B;
         private double Q;
-        private int Lbest;
+        private int Lbest; 
+        private int Lmin;
         private int time;
 
         public List<Node> tbest
@@ -27,7 +28,7 @@ namespace Lab5
             get { return Tbest; }
         }
 
-        public AntColony(int antCount, int time, Graph graph)
+        public AntColony(int antCount, int time, Graph graph, int lmin)
         {
             this.antCount = antCount;
             for (int i = 0; i < antCount; i++)
@@ -40,6 +41,7 @@ namespace Lab5
 
             pher_matrix = new double[graph.Size, graph.Size];
             visib_matrix = new double[graph.Size, graph.Size];
+            this.Lmin = lmin;
         }
 
         private bool isUnicNode(int ant_num)
@@ -73,7 +75,6 @@ namespace Lab5
                 }
             }
 
-            int Lmin = greedy();
             Lbest = int.MaxValue;
 
             List<int> start = new List<int>();
@@ -107,7 +108,7 @@ namespace Lab5
                     }
                 }
 
-                if(temp < Lbest)
+                if (temp < Lbest)
                 {
                     Lbest = temp;
 
@@ -117,7 +118,9 @@ namespace Lab5
                         Tbest.Add(ants[best].memory[i]);
                     }
                 }
+
                 //Console.Write(Lbest + " ");
+                //Console.WriteLine();
                 updPher(ants, Lmin);
                 for (int i = 0; i < antCount; i++)
                 {

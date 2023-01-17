@@ -1,0 +1,11 @@
+D:\Visual Projects\Algorithm_Design_Lab\Lab6\Lab6\bin\Debug\Lab6.exe.config
+D:\Visual Projects\Algorithm_Design_Lab\Lab6\Lab6\bin\Debug\Lab6.exe
+D:\Visual Projects\Algorithm_Design_Lab\Lab6\Lab6\bin\Debug\Lab6.pdb
+D:\Visual Projects\Algorithm_Design_Lab\Lab6\Lab6\obj\Debug\Lab6.csproj.AssemblyReference.cache
+D:\Visual Projects\Algorithm_Design_Lab\Lab6\Lab6\obj\Debug\Lab6.csproj.SuggestedBindingRedirects.cache
+D:\Visual Projects\Algorithm_Design_Lab\Lab6\Lab6\obj\Debug\Lab6.Form1.resources
+D:\Visual Projects\Algorithm_Design_Lab\Lab6\Lab6\obj\Debug\Lab6.Properties.Resources.resources
+D:\Visual Projects\Algorithm_Design_Lab\Lab6\Lab6\obj\Debug\Lab6.csproj.GenerateResource.cache
+D:\Visual Projects\Algorithm_Design_Lab\Lab6\Lab6\obj\Debug\Lab6.csproj.CoreCompileInputs.cache
+D:\Visual Projects\Algorithm_Design_Lab\Lab6\Lab6\obj\Debug\Lab6.exe
+D:\Visual Projects\Algorithm_Design_Lab\Lab6\Lab6\obj\Debug\Lab6.pdb
