@@ -41,11 +41,9 @@
             this.EndButton = new System.Windows.Forms.Button();
             this.RerolButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
-            this.RerolBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.RaundBox = new System.Windows.Forms.TextBox();
             this.ScorePlayerBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.ScoreAIBox = new System.Windows.Forms.TextBox();
@@ -58,6 +56,8 @@
             this.dice3rel = new System.Windows.Forms.CheckBox();
             this.dice4rel = new System.Windows.Forms.CheckBox();
             this.dice5rel = new System.Windows.Forms.CheckBox();
+            this.RerolBox = new System.Windows.Forms.Label();
+            this.RaundBox = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.P1_dice1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1_dice2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1_dice3)).BeginInit();
@@ -163,9 +163,9 @@
             // EndButton
             // 
             this.EndButton.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.EndButton.Location = new System.Drawing.Point(12, 454);
+            this.EndButton.Location = new System.Drawing.Point(13, 507);
             this.EndButton.Name = "EndButton";
-            this.EndButton.Size = new System.Drawing.Size(237, 51);
+            this.EndButton.Size = new System.Drawing.Size(154, 51);
             this.EndButton.TabIndex = 10;
             this.EndButton.Text = "Закінчити хід";
             this.EndButton.UseVisualStyleBackColor = true;
@@ -173,10 +173,10 @@
             // 
             // RerolButton
             // 
-            this.RerolButton.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RerolButton.Location = new System.Drawing.Point(13, 511);
+            this.RerolButton.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RerolButton.Location = new System.Drawing.Point(173, 507);
             this.RerolButton.Name = "RerolButton";
-            this.RerolButton.Size = new System.Drawing.Size(236, 51);
+            this.RerolButton.Size = new System.Drawing.Size(192, 51);
             this.RerolButton.TabIndex = 11;
             this.RerolButton.Text = "Перекинути кубики";
             this.RerolButton.UseVisualStyleBackColor = true;
@@ -185,33 +185,24 @@
             // ExitButton
             // 
             this.ExitButton.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ExitButton.Location = new System.Drawing.Point(13, 394);
+            this.ExitButton.Location = new System.Drawing.Point(939, 507);
             this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(236, 54);
+            this.ExitButton.Size = new System.Drawing.Size(215, 51);
             this.ExitButton.TabIndex = 12;
             this.ExitButton.Text = "Вихід";
             this.ExitButton.UseVisualStyleBackColor = true;
-            // 
-            // RerolBox
-            // 
-            this.RerolBox.Enabled = false;
-            this.RerolBox.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RerolBox.Location = new System.Drawing.Point(156, 48);
-            this.RerolBox.Name = "RerolBox";
-            this.RerolBox.ReadOnly = true;
-            this.RerolBox.Size = new System.Drawing.Size(26, 31);
-            this.RerolBox.TabIndex = 13;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(23, 19);
+            this.label1.Location = new System.Drawing.Point(8, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(302, 28);
+            this.label1.Size = new System.Drawing.Size(308, 28);
             this.label1.TabIndex = 14;
-            this.label1.Text = "Кількість перекеданнь кубиків";
+            this.label1.Text = "Кількість перекеданнь кубиків:";
             // 
             // label2
             // 
@@ -226,21 +217,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(1050, 12);
+            this.label3.Location = new System.Drawing.Point(1053, 29);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 28);
+            this.label3.Size = new System.Drawing.Size(71, 28);
             this.label3.TabIndex = 16;
-            this.label3.Text = "Раунд";
-            // 
-            // RaundBox
-            // 
-            this.RaundBox.Enabled = false;
-            this.RaundBox.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RaundBox.Location = new System.Drawing.Point(1026, 50);
-            this.RaundBox.Name = "RaundBox";
-            this.RaundBox.ReadOnly = true;
-            this.RaundBox.Size = new System.Drawing.Size(115, 31);
-            this.RaundBox.TabIndex = 17;
+            this.label3.Text = "Раунд:";
             // 
             // ScorePlayerBox
             // 
@@ -267,7 +248,7 @@
             // 
             this.ScoreAIBox.Enabled = false;
             this.ScoreAIBox.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ScoreAIBox.Location = new System.Drawing.Point(805, 48);
+            this.ScoreAIBox.Location = new System.Drawing.Point(805, 41);
             this.ScoreAIBox.Name = "ScoreAIBox";
             this.ScoreAIBox.ReadOnly = true;
             this.ScoreAIBox.Size = new System.Drawing.Size(115, 31);
@@ -362,12 +343,36 @@
             this.dice5rel.TabIndex = 29;
             this.dice5rel.UseVisualStyleBackColor = true;
             // 
+            // RerolBox
+            // 
+            this.RerolBox.AutoSize = true;
+            this.RerolBox.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RerolBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.RerolBox.Location = new System.Drawing.Point(322, 29);
+            this.RerolBox.Name = "RerolBox";
+            this.RerolBox.Size = new System.Drawing.Size(24, 28);
+            this.RerolBox.TabIndex = 30;
+            this.RerolBox.Text = "0";
+            // 
+            // RaundBox
+            // 
+            this.RaundBox.AutoSize = true;
+            this.RaundBox.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RaundBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.RaundBox.Location = new System.Drawing.Point(1124, 29);
+            this.RaundBox.Name = "RaundBox";
+            this.RaundBox.Size = new System.Drawing.Size(21, 28);
+            this.RaundBox.TabIndex = 31;
+            this.RaundBox.Text = "1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
             this.ClientSize = new System.Drawing.Size(1166, 574);
+            this.Controls.Add(this.RaundBox);
+            this.Controls.Add(this.RerolBox);
             this.Controls.Add(this.dice5rel);
             this.Controls.Add(this.dice4rel);
             this.Controls.Add(this.dice3rel);
@@ -380,11 +385,9 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.ScorePlayerBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.RaundBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.RerolBox);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.RerolButton);
             this.Controls.Add(this.EndButton);
@@ -430,11 +433,9 @@
         private System.Windows.Forms.Button EndButton;
         private System.Windows.Forms.Button RerolButton;
         private System.Windows.Forms.Button ExitButton;
-        private System.Windows.Forms.TextBox RerolBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox RaundBox;
         private System.Windows.Forms.TextBox ScorePlayerBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox ScoreAIBox;
@@ -447,6 +448,8 @@
         private System.Windows.Forms.CheckBox dice3rel;
         private System.Windows.Forms.CheckBox dice4rel;
         private System.Windows.Forms.CheckBox dice5rel;
+        private System.Windows.Forms.Label RerolBox;
+        private System.Windows.Forms.Label RaundBox;
     }
 }
 
