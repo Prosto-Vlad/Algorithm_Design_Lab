@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Lab6
 {
@@ -44,6 +47,27 @@ namespace Lab6
 
             isPlayer = true;
             upd_dices();
+        }
+
+        private void reset_game()
+        {
+            Random rand = new Random();
+            for (int i = 0; i < 5; i++)
+            {
+                P1_deck[i].Num = rand.Next(1, 6);
+                P2_deck[i].Num = rand.Next(1, 6);
+            }
+
+            isPlayer = true;
+            max_hod = 3;
+            raund = 1;
+
+            p2_vic = 0;
+            p1_vic = 0;
+            upd_dices();
+            upd_score();
+
+            RerolBox.Text = "3";
         }
 
         private void upd_dices()
@@ -281,6 +305,11 @@ namespace Lab6
                     break;
             }
 
+            upd_score();
+        }
+
+        private void upd_score()
+        {
             p1_score = calcScore(P1_deck);
             ScorePlayerBox.Text = p1_score.ToString();
             p2_score = calcScore(P2_deck);
@@ -351,21 +380,15 @@ namespace Lab6
 
         private void AI_hod()
         {
-            p1_score = calcScore(P1_deck);
-            ScorePlayerBox.Text = p1_score.ToString();
-            p2_score = calcScore(P2_deck);
-            ScoreAIBox.Text = p2_score.ToString();
-            //for (int i = 0; i < max_hod; i++)
-            //{
-            //    if(p2_score < p1_score)
-            //        Rerol();
-            //}
-
+            upd_score();
 
             for (int i = 0; i < max_hod; i++)
             {
-                Expectminimax();
-                Rerol();
+                if (p1_score != 50)
+                {
+                    Expectminimax();
+                    Rerol();
+                }
             }
 
             isPlayer = true;
@@ -384,17 +407,46 @@ namespace Lab6
                 p2_vic++;
                 AIVict.Text = p2_vic.ToString();
             }
+
+            if (raund == 2)
+            {
+                if (p1_vic == 2)
+                {
+                    MessageBox.Show("You win!"); 
+                    reset_game();
+                }
+                else if(p2_vic == 2)
+                {
+                    MessageBox.Show("You lose!"); 
+                    reset_game();
+                }
+            }
+            if (raund == 3)
+            {
+                if (p1_vic > p2_vic)
+                {
+                    MessageBox.Show("You win!"); 
+                    reset_game();
+                }
+                else if(p1_vic < p2_vic)
+                {
+                    MessageBox.Show("You lose!"); 
+                    reset_game();
+                }
+                else if (p1_vic == p2_vic)
+                {
+                    MessageBox.Show("Draw!"); 
+                    reset_game();
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(raund == 1)
-            {
-                max_hod = p1_rerol;
-                RerolBox.Text = p1_rerol.ToString();
-            }
-            
-            isPlayer= false;
+            max_hod = p1_rerol;
+            RerolBox.Text = p1_rerol.ToString();
+
+            isPlayer = false;
             p1_rerol = 0;
             AI_hod();
         }
@@ -402,6 +454,8 @@ namespace Lab6
         private void RerolButton_Click(object sender, EventArgs e)
         {
             Rerol();
+
+            RerolBox.Text = (max_hod - p1_rerol).ToString();
         }
 
         private int calcScore(List<Dice> deck)
@@ -492,48 +546,185 @@ namespace Lab6
 
         private void Expectminimax()
         {
-            List<State> states = new List<State>();
+            List<State> states = new List<State>(generate_states());
             List<double> expectedScore = new List<double>();
+
+            foreach (State state in states)
+            {
+                expectedScore.Add(calcExpecrScore(state));
+            }
+
+            if (p2_score != 50)
+            {
+                states[expectedScore.IndexOf(expectedScore.Max())].Reroled_dice.CopyTo(need_to_rerol,0);
+            }
+        }
+
+        private List<State> generate_states()
+        {
+            List<State> res = new List<State>();
+
 
             for (int i = 0; i < 5; i++)
             {
-                State temp = new State(P2_deck);
+                State temp = new State();
+                temp.Reroled_dice[i] = true;
+                res.Add(temp);
+            }
 
-                for (int j = 0; j < 6; j++)
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = i+1; j < 5; j++)
                 {
-                    temp.Deck[i].Num = j;
-                    temp.Score = calcScore(temp.Deck);
+                    State temp = new State();
                     temp.Reroled_dice[i] = true;
-                    states.Add(temp);
+                    temp.Reroled_dice[j] = true;
+                    res.Add(temp);
                 }
-                expectedScore.Add(calcExpecrScore(states, 1));
-                states.Clear();
             }
 
-            if (expectedScore.Max() != 0)
+            for (int i = 0; i < 5; i++)
             {
-                need_to_rerol[expectedScore.IndexOf(expectedScore.Max())] = true;
+                for (int j = i + 1; j < 5; j++)
+                {
+                    for (int k = j+1; k < 5; k++)
+                    {
+                        State temp = new State();
+                        temp.Reroled_dice[i] = true;
+                        temp.Reroled_dice[j] = true;
+                        temp.Reroled_dice[k] = true;
+                        res.Add(temp);
+                    }
+                }
             }
 
-        }
-
-        private double calcExpecrScore(List<State> states, int cCheged)
-        {
-            double res = 0;
-            for (int i = 0; i < states.Count; i++)
+            for (int i = 0; i < 5; i++)
             {
-                res += (1.0 / 6) * (double)states[i].Score;
+                for (int j = i + 1; j < 5; j++)
+                {
+                    for (int k = j + 1; k < 5; k++)
+                    {
+                        for (int l = k+1; l < 5; l++)
+                        {
+                            State temp = new State();
+                            temp.Reroled_dice[i] = true;
+                            temp.Reroled_dice[j] = true;
+                            temp.Reroled_dice[k] = true;
+                            temp.Reroled_dice[l] = true;
+                            res.Add(temp);
+                        }
+                    }
+                }
             }
+
+            State five = new State();
+            five.Reroled_dice[0] = true;
+            five.Reroled_dice[1] = true;
+            five.Reroled_dice[2] = true;
+            five.Reroled_dice[3] = true;
+            five.Reroled_dice[4] = true;
+            res.Add(five);
+
             return res;
         }
 
-        private void min()
+        private double calcExpecrScore(State state)
         {
+            double res = 0;
+            List<int> toRerol = new List<int>();
+            State temp = new State(P2_deck);
 
-        }
-        private void max()
-        {
+            for (int i = 0; i < 5; i++)
+            {
+                if (state.Reroled_dice[i] == true)
+                    toRerol.Add(i);
+            }
 
+            switch(toRerol.Count)
+            {
+                case 1:
+                    for (int i = 0; i < 6; i++)
+                    {
+                        temp.Deck[toRerol[0]].Num = i;
+                        temp.Score = calcScore(temp.Deck);
+                        res += (1.0 / 6) * (double)temp.Score;
+                    }
+                    return res;
+                case 2:
+                    for (int i = 0; i < 6; i++)
+                    {
+                        for (int j = 0; j < 6; j++)
+                        {
+                            temp.Deck[toRerol[0]].Num = i;
+                            temp.Deck[toRerol[1]].Num = j;
+                            temp.Score = calcScore(temp.Deck);
+                            res += (1.0 / 36) * (double)temp.Score;
+                        }
+                    }
+                    return res;
+                case 3:
+                    for (int i = 0; i < 6; i++)
+                    {
+                        for (int j = 0; j < 6; j++)
+                        {
+                            for (int k = 0; k < 6; k++)
+                            {
+                                temp.Deck[toRerol[0]].Num = i;
+                                temp.Deck[toRerol[1]].Num = j;
+                                temp.Deck[toRerol[2]].Num = k;
+                                temp.Score = calcScore(temp.Deck);
+                                res += (1.0 / 216) * (double)temp.Score;
+                            }
+                        }
+                    }
+                    return res;
+                case 4:
+                    for (int i = 0; i < 6; i++)
+                    {
+                        for (int j = 0; j < 6; j++)
+                        {
+                            for (int k = 0; k < 6; k++)
+                            {
+                                for (int l = 0; l < 6; l++)
+                                {
+                                    temp.Deck[toRerol[0]].Num = i;
+                                    temp.Deck[toRerol[1]].Num = j;
+                                    temp.Deck[toRerol[2]].Num = k;
+                                    temp.Deck[toRerol[3]].Num = l ;
+                                    temp.Score = calcScore(temp.Deck);
+                                    res += (1.0 / 1296) * (double)temp.Score;
+                                }
+                            }
+                        }
+                    }
+                    return res;
+                case 5:
+                    for (int i = 0; i < 6; i++)
+                    {
+                        for (int j = 0; j < 6; j++)
+                        {
+                            for (int k = 0; k < 6; k++)
+                            {
+                                for (int l = 0; l < 6; l++)
+                                {
+                                    for (int o = 0; o < 6; o++)
+                                    {
+                                        temp.Deck[toRerol[0]].Num = i;
+                                        temp.Deck[toRerol[1]].Num = j;
+                                        temp.Deck[toRerol[2]].Num = k;
+                                        temp.Deck[toRerol[3]].Num = l;
+                                        temp.Deck[toRerol[4]].Num = o;
+                                        temp.Score = calcScore(temp.Deck);
+                                        res += (1.0 / 7776) * (double)temp.Score;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    return res;
+                default:
+                    return 0;
+            }
         }
     }
 }

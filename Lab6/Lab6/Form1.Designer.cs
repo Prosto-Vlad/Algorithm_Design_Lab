@@ -352,7 +352,7 @@
             this.RerolBox.Name = "RerolBox";
             this.RerolBox.Size = new System.Drawing.Size(24, 28);
             this.RerolBox.TabIndex = 30;
-            this.RerolBox.Text = "0";
+            this.RerolBox.Text = "3";
             // 
             // RaundBox
             // 
@@ -401,8 +401,9 @@
             this.Controls.Add(this.P1_dice3);
             this.Controls.Add(this.P1_dice2);
             this.Controls.Add(this.P1_dice1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Indean dices";
             ((System.ComponentModel.ISupportInitialize)(this.P1_dice1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1_dice2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1_dice3)).EndInit();
